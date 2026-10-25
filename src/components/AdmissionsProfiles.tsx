@@ -1,7 +1,7 @@
 import React from 'react';
 import { motion } from 'motion/react';
-import { ADMISSIONS_PROFILES, COHORT_DATES } from '../data/studioContent';
-import { Users, Calendar, ArrowRight } from 'lucide-react';
+import { ADMISSIONS_PROFILES, KEY_DATES } from '../data/studioContent';
+import { Calendar, ArrowRight } from 'lucide-react';
 
 interface AdmissionsProfilesProps {
   onOpenApply: () => void;
@@ -11,78 +11,74 @@ export const AdmissionsProfiles: React.FC<AdmissionsProfilesProps> = ({ onOpenAp
   return (
     <section id="admissions" className="py-20 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto border-t-2 border-[#161616]/15">
       {/* Header */}
-      <div className="text-center max-w-3xl mx-auto mb-16">
-        <span className="text-xs font-mono font-bold uppercase tracking-wider bg-[#C8FF2E] text-[#161616] px-3 py-1 rounded-full border border-[#161616]">
-          // ADMISSIONS PROFILE
+      <div className="text-center max-w-3xl mx-auto mb-14">
+        <span className="text-xs font-mono font-bold uppercase tracking-wider bg-[#C8FF2E] text-[#161616] px-3.5 py-1.5 rounded-full border border-[#161616]">
+          // ADMISSIONS PROFILES
         </span>
-        <h2 className="text-3xl sm:text-5xl font-black uppercase text-[#161616] tracking-tight mt-3">
-          BUILT FOR THREE KINDS OF PEOPLE.
+        <h2 className="text-4xl sm:text-6xl font-heading font-black uppercase text-[#161616] tracking-tight mt-3">
+          Admissions Profiles.
         </h2>
-        <p className="text-sm sm:text-base font-medium text-[#303030] mt-3">
-          Bring an idea, an audience or a business. You leave with a verified production plan and high-retention work to show for it.
-        </p>
       </div>
 
-      {/* 3 Profiles Grid */}
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-20">
+      {/* 3 Profiles Cards with High-Resolution Curated Images */}
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-16">
         {ADMISSIONS_PROFILES.map((profile, index) => (
           <motion.div
             key={profile.id}
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.5, delay: index * 0.1 }}
-            className="p-8 rounded-3xl bg-white border-2 border-[#161616] shadow-[5px_5px_0px_#161616] flex flex-col justify-between"
+            whileHover={{ y: -5, rotate: index % 2 === 0 ? -1 : 1 }}
+            className="rounded-3xl bg-white border-2 border-[#161616] shadow-[6px_6px_0px_#161616] overflow-hidden flex flex-col justify-between"
           >
             <div>
-              <div className="flex items-center justify-between mb-4 pb-2 border-b-2 border-[#161616]/15">
-                <span className="text-xs font-mono font-bold text-[#F8330B]">
-                  PROFILE {profile.number}
-                </span>
-                <Users className="w-4 h-4 text-[#161616]" />
+              {/* Image Container with high contrast border */}
+              <div className="relative aspect-[16/10] overflow-hidden border-b-2 border-[#161616] bg-[#161616]">
+                <img
+                  src={profile.image}
+                  alt={profile.imageAlt}
+                  className="w-full h-full object-cover object-center hover:scale-105 transition-transform duration-500"
+                  loading="lazy"
+                />
+                <div className="absolute top-3 left-3 bg-[#161616] text-[#C8FF2E] text-[11px] font-mono font-black px-3 py-1 rounded-full border-2 border-white shadow-md">
+                  {profile.badge}
+                </div>
               </div>
 
-              <h3 className="text-2xl font-black uppercase text-[#161616] tracking-tight mb-2">
-                {profile.title}
-              </h3>
-              <p className="text-xs font-mono font-bold text-[#580D14] mb-4">
-                {profile.summary}
-              </p>
-
-              <div className="space-y-3 text-xs sm:text-sm text-[#303030] font-medium leading-relaxed mb-6">
-                <div>
-                  <span className="font-bold text-[#161616]">For You If: </span>
-                  {profile.forYouIf}
-                </div>
+              {/* Text content */}
+              <div className="p-6">
+                <h3 className="text-2xl font-heading font-black uppercase text-[#161616] tracking-tight mb-2">
+                  {profile.title}
+                </h3>
+                <p className="text-xs sm:text-sm font-medium text-[#303030] leading-relaxed">
+                  {profile.description}
+                </p>
               </div>
             </div>
 
-            <div className="p-4 rounded-2xl bg-[#FEFAE7] border-2 border-[#161616] text-xs font-mono font-bold text-[#161616]">
-              <span className="text-[#F8330B]">YOU LEAVE WITH: </span>
-              {profile.youLeaveWith}
+            <div className="p-6 pt-0">
+              <button
+                onClick={onOpenApply}
+                className="w-full py-3 rounded-full bg-[#FEFAE7] hover:bg-[#161616] hover:text-[#C8FF2E] font-heading font-black uppercase text-xs tracking-wider border-2 border-[#161616] shadow-[2px_2px_0px_#161616] transition-colors cursor-pointer flex items-center justify-center gap-1.5"
+              >
+                <span>Apply as {profile.title.split(' ')[0]}</span>
+                <ArrowRight className="w-3.5 h-3.5" />
+              </button>
             </div>
           </motion.div>
         ))}
       </div>
 
-      {/* Cohort 01 Key Dates Timeline */}
+      {/* Key Dates (Cohort 01) */}
       <div className="rounded-3xl bg-[#FEFAE7] border-2 border-[#161616] shadow-[6px_6px_0px_#161616] p-8 sm:p-12">
-        <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-8">
-          <div>
-            <span className="text-xs font-mono font-bold uppercase tracking-wider bg-[#F8330B] text-white px-3 py-1 rounded-full border border-[#161616]">
-              // KEY DATES
-            </span>
-            <h3 className="text-2xl sm:text-3xl font-black uppercase text-[#161616] tracking-tight mt-2">
-              The Road Ahead for Cohort 01
-            </h3>
-          </div>
-          <div className="text-xs font-mono font-bold text-[#646464]">
-            All dates tentative & confirmed to applicants
-          </div>
+        <div className="mb-8">
+          <span className="text-xs font-mono font-bold uppercase tracking-wider bg-[#F8330B] text-white px-3.5 py-1.5 rounded-full border border-[#161616]">
+            // KEY DATES
+          </span>
+          <h3 className="text-3xl sm:text-4xl font-heading font-black uppercase text-[#161616] tracking-tight mt-2">
+            Key Dates (Cohort 01)
+          </h3>
         </div>
 
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
-          {COHORT_DATES.map((item) => (
+          {KEY_DATES.map((item) => (
             <div
               key={item.step}
               className="p-5 rounded-2xl bg-white border-2 border-[#161616] shadow-[3px_3px_0px_#161616] flex flex-col justify-between"
@@ -92,28 +88,15 @@ export const AdmissionsProfiles: React.FC<AdmissionsProfilesProps> = ({ onOpenAp
                   <span>STEP {item.step}</span>
                   <Calendar className="w-3.5 h-3.5 text-[#F8330B]" />
                 </div>
-                <div className="text-xl font-black font-mono text-[#161616] mb-1">
+                <div className="text-xl sm:text-2xl font-black font-heading text-[#161616] mb-1">
                   {item.date}
                 </div>
-                <div className="text-sm font-black uppercase tracking-tight text-[#161616] mb-2">
+                <div className="text-sm font-heading font-black uppercase text-[#161616]">
                   {item.label}
                 </div>
               </div>
-              <div className="text-xs font-mono text-[#646464] font-medium pt-2 border-t border-[#161616]/15">
-                {item.sub}
-              </div>
             </div>
           ))}
-        </div>
-
-        <div className="mt-8 text-center">
-          <button
-            onClick={onOpenApply}
-            className="inline-flex items-center gap-2 px-8 py-3.5 rounded-full bg-[#161616] text-[#C8FF2E] font-extrabold uppercase text-xs tracking-wider border-2 border-[#161616] shadow-[3px_3px_0px_#161616] hover:bg-[#C8FF2E] hover:text-[#161616] transition-all cursor-pointer"
-          >
-            <span>Apply First, Pay After Selection</span>
-            <ArrowRight className="w-4 h-4" />
-          </button>
         </div>
       </div>
     </section>

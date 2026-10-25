@@ -48,7 +48,7 @@ export const DraggableStickerCanvas: React.FC = () => {
         </div>
 
         {/* Draggable Motion Stickers */}
-        {STICKER_ITEMS.map((sticker) => (
+        {STICKER_ITEMS.map((sticker, idx) => (
           <motion.div
             key={sticker.id}
             drag
@@ -60,8 +60,8 @@ export const DraggableStickerCanvas: React.FC = () => {
               backgroundColor: sticker.color,
               color: sticker.textColor,
               rotate: `${sticker.rotation}deg`,
-              left: `${sticker.initialX}px`,
-              top: `${sticker.initialY}px`
+              left: `${(idx % 4) * 22 + 4}%`,
+              top: `${Math.floor(idx / 4) * 45 + 12}%`
             }}
             className="absolute px-4 sm:px-5 py-2.5 rounded-2xl border-2 border-[#161616] shadow-[3px_3px_0px_#161616] font-mono text-xs sm:text-sm font-black uppercase tracking-wider z-20 cursor-grab touch-none"
           >

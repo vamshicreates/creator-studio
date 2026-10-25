@@ -28,52 +28,52 @@ export const App: React.FC = () => {
 
   return (
     <div className="min-h-screen bg-[#F7F6F0] text-[#161616] selection:bg-[#C8FF2E] selection:text-[#161616]">
-      {/* Top Admissions Announcement Ticker */}
-      <AnnouncementBar onOpenApply={handleOpenApply} />
+      {/* Top Ticker */}
+      <AnnouncementBar />
 
-      {/* Sticky Top Navigation Bar */}
+      {/* Sticky Header */}
       <Navbar onOpenApply={handleOpenApply} />
 
-      {/* Main Content Sections */}
+      {/* Main Content */}
       <main>
-        {/* Hero with Massive Staggered Headline & Marquee Ticker */}
+        {/* Hero Section */}
         <Hero onOpenApply={handleOpenApply} />
 
-        {/* Monograph & Contrast Bento ("TAUGHT THEORY. NOT RETENTION.") */}
-        <MonographSection onOpenApply={handleOpenApply} />
+        {/* The Producer's Monologue & Industry Contrast */}
+        <MonographSection />
 
-        {/* The Working Lot (Stage 01, Bay 04, Room 102) Tabbed Bento */}
+        {/* The Working Lot (Stage 01, Bay 04, Room 102) */}
         <WorkingLotBento onOpenApply={handleOpenApply} />
 
-        {/* Direct Mentorship (D. Suresh Babu, Rana Daggubati, Mihika) & 5 Masterclasses */}
+        {/* Direct Mentorship & Masterclasses */}
         <MentorsSection />
 
-        {/* Core Philosophy: 3 Pillars & Direct/Indirect Monetization */}
+        {/* Core Philosophy: 3 Value Pillars */}
         <PhilosophyPillars />
 
-        {/* 12-Week Curriculum Sprint across 4 Phases */}
-        <CurriculumSprint onOpenApply={handleOpenApply} />
+        {/* 12-Week Curriculum Sprint */}
+        <CurriculumSprint />
 
-        {/* Interactive Draggable Sticker Canvas ("WORK IN STYLE") */}
+        {/* Interactive Draggable Sticker Canvas */}
         <DraggableStickerCanvas />
 
-        {/* Admissions Profiles & Cohort 01 Key Dates */}
+        {/* Admissions Profiles with Curated Images & Key Dates */}
         <AdmissionsProfiles onOpenApply={handleOpenApply} />
 
-        {/* Admissions Model & Tuition ("Apply First, Pay After Selection") */}
+        {/* Admissions & Tuition: Apply First, Pay Only If Selected */}
         <AdmissionsPricing onOpenApply={handleOpenApply} />
 
-        {/* Frequently Asked Questions Neo-Brutalist Accordion */}
+        {/* 5 FAQs */}
         <FAQSection />
 
-        {/* High-Impact Final CTA Banner */}
+        {/* Final CTA Banner */}
         <FinalCTA onOpenApply={handleOpenApply} />
       </main>
 
-      {/* Global Footer */}
+      {/* Footer */}
       <Footer />
 
-      {/* Interactive Cohort 01 Application Modal with Confetti */}
+      {/* Interactive Application Modal */}
       <ApplicationModal
         isOpen={isApplyModalOpen}
         onClose={handleCloseApply}
