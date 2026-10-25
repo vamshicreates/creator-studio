@@ -3,63 +3,122 @@
 @layer base {
   :root {
     --font-heading: 'Space Grotesk', system-ui, sans-serif;
-    --font-body: 'Plus Jakarta Sans', system-ui, sans-serif;
+    --font-body: 'DM Sans', 'Plus Jakarta Sans', system-ui, sans-serif;
+    --font-mono: 'JetBrains Mono', ui-monospace, SFMono-Regular, monospace;
+    
+    /* Krackerz Color Palette */
+    --color-cream: #F7F6F0;
+    --color-cream-card: #FEFAE7;
+    --color-cream-alt: #EDEBE1;
+    --color-jet: #161616;
+    --color-lime: #C8FF2E;
+    --color-orange: #F8330B;
+    --color-lavender: #C7CAFF;
+    --color-mint: #C0ECBF;
+    --color-lilac: #F0BEFA;
+    --color-maroon: #580D14;
   }
 
   body {
     font-family: var(--font-body);
-    background-color: #09090b;
-    color: #f4f4f5;
+    background-color: #F7F6F0;
+    color: #161616;
     overflow-x: hidden;
   }
 
   h1, h2, h3, h4, h5, h6 {
     font-family: var(--font-heading);
+    letter-spacing: -0.025em;
+  }
+
+  .font-mono {
+    font-family: var(--font-mono);
   }
 }
 
-/* Custom scrollbar */
+/* Custom scrollbar matching Krackerz warm paper style */
 ::-webkit-scrollbar {
   width: 8px;
+  height: 8px;
 }
 
 ::-webkit-scrollbar-track {
-  background: #09090b;
+  background: #F7F6F0;
 }
 
 ::-webkit-scrollbar-thumb {
-  background: #27272a;
+  background: #161616;
   border-radius: 4px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: #3f3f46;
+  background: #333333;
 }
 
-/* Glassmorphism helpers */
-.glass-panel {
-  background: rgba(18, 18, 23, 0.75);
-  backdrop-filter: blur(16px);
-  -webkit-backdrop-filter: blur(16px);
-  border: 1px solid rgba(255, 255, 255, 0.08);
+/* Marquee Animations */
+@keyframes marquee {
+  0% {
+    transform: translateX(0%);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
 }
 
-.glass-card {
-  background: rgba(24, 24, 27, 0.6);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
-  border: 1px solid rgba(255, 255, 255, 0.06);
+@keyframes marquee-reverse {
+  0% {
+    transform: translateX(-50%);
+  }
+  100% {
+    transform: translateX(0%);
+  }
 }
 
-.glass-card:hover {
-  border-color: rgba(245, 158, 11, 0.3);
+.animate-marquee {
+  display: flex;
+  width: max-content;
+  animation: marquee 35s linear infinite;
 }
 
-/* Glow effects */
-.glow-gold {
-  box-shadow: 0 0 50px -10px rgba(245, 158, 11, 0.25);
+.animate-marquee:hover {
+  animation-play-state: paused;
 }
 
-.glow-purple {
-  box-shadow: 0 0 50px -10px rgba(168, 85, 247, 0.2);
+.animate-marquee-reverse {
+  display: flex;
+  width: max-content;
+  animation: marquee-reverse 35s linear infinite;
+}
+
+.animate-marquee-reverse:hover {
+  animation-play-state: paused;
+}
+
+/* Neo-Brutalist Border & Shadow Utilities */
+.brutalist-card {
+  background-color: #FFFFFF;
+  border: 2px solid #161616;
+  box-shadow: 4px 4px 0px #161616;
+  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.brutalist-card:hover {
+  transform: translate(-2px, -2px);
+  box-shadow: 6px 6px 0px #161616;
+}
+
+.brutalist-btn {
+  border: 2px solid #161616;
+  box-shadow: 3px 3px 0px #161616;
+  transition: all 0.15s ease-out;
+}
+
+.brutalist-btn:hover {
+  transform: translate(-1.5px, -1.5px);
+  box-shadow: 4.5px 4.5px 0px #161616;
+}
+
+.brutalist-btn:active {
+  transform: translate(1px, 1px);
+  box-shadow: 1px 1px 0px #161616;
 }

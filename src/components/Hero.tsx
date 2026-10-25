@@ -1,117 +1,152 @@
 import React from 'react';
 import { motion } from 'motion/react';
-import { ArrowRight, Play, Film, Flame, Award, Eye, TrendingUp } from 'lucide-react';
-import { STUDIO_METRICS } from '../data/portfolio';
+import { ArrowRight, Film, Sparkles, CheckCircle2 } from 'lucide-react';
+import { STUDIO_METRICS } from '../data/studioContent';
 
 interface HeroProps {
-  onOpenBooking: () => void;
+  onOpenApply: () => void;
 }
 
-export const Hero: React.FC<HeroProps> = ({ onOpenBooking }) => {
+export const Hero: React.FC<HeroProps> = ({ onOpenApply }) => {
+  const marqueePills = [
+    { text: 'Stage 01 Multi-Cam Soundstage', color: 'bg-[#C8FF2E] text-[#161616]' },
+    { text: 'DaVinci Color & Micro-Pacing', color: 'bg-[#C7CAFF] text-[#161616]' },
+    { text: '60 Years of Cinema Storytelling', color: 'bg-[#FEFAE7] text-[#161616]' },
+    { text: 'Zero Upfront Cost to Apply', color: 'bg-[#C0ECBF] text-[#161616]' },
+    { text: 'The ₹1 Lakh Creator Challenge', color: 'bg-[#F0BEFA] text-[#161616]' },
+    { text: 'Guinness World Record Lot', color: 'bg-[#F8330B] text-white' },
+    { text: 'Direct Suresh Babu & Rana Mentorship', color: 'bg-[#161616] text-[#C8FF2E]' },
+    { text: 'Audience Psychology Over Hype', color: 'bg-[#EDEBE1] text-[#161616]' }
+  ];
+
   return (
-    <section className="relative min-h-[92vh] flex items-center justify-center pt-28 pb-16 px-4 sm:px-6 lg:px-8 overflow-hidden">
-      {/* Background ambient radial glow */}
-      <div className="absolute top-1/4 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[400px] bg-gradient-to-tr from-amber-500/15 via-purple-600/15 to-blue-600/10 rounded-full blur-[140px] pointer-events-none" />
-      <div className="absolute bottom-10 left-10 w-72 h-72 bg-amber-500/10 rounded-full blur-[100px] pointer-events-none" />
-      <div className="absolute top-20 right-10 w-80 h-80 bg-purple-500/10 rounded-full blur-[120px] pointer-events-none" />
+    <section className="relative pt-12 pb-16 px-4 sm:px-6 lg:px-8 overflow-hidden bg-[#F7F6F0]">
+      {/* Background Subtle Grid Texture */}
+      <div className="absolute inset-0 bg-[radial-gradient(#161616_1px,transparent_1px)] [background-size:28px_28px] opacity-[0.07] pointer-events-none" />
 
-      {/* Grid pattern overlay */}
-      <div className="absolute inset-0 bg-[radial-gradient(#27272a_1px,transparent_1px)] [background-size:24px_24px] opacity-25 pointer-events-none" />
-
-      <div className="relative max-w-5xl mx-auto text-center z-10">
-        {/* Top Floating Badge */}
+      <div className="relative max-w-6xl mx-auto text-center z-10">
+        {/* Eyebrow Pill Badge */}
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
+          initial={{ opacity: 0, y: 15 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, ease: 'easeOut' }}
-          className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-zinc-900/90 border border-zinc-700/70 text-xs font-medium text-zinc-300 shadow-xl mb-6 backdrop-blur-md"
+          transition={{ duration: 0.5 }}
+          className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-[#FEFAE7] border-2 border-[#161616] shadow-[2px_2px_0px_#161616] text-xs font-mono font-bold uppercase tracking-wider mb-8"
         >
-          <span className="flex h-2 w-2 rounded-full bg-amber-400 animate-pulse" />
-          <span className="text-zinc-200 font-semibold">15 Master Video Editing Styles</span>
-          <span className="text-zinc-500">•</span>
-          <span className="text-amber-400 font-mono">Agentic Workflow Enabled</span>
+          <span className="flex h-2.5 w-2.5 rounded-full bg-[#F8330B] animate-pulse" />
+          <span>RAMANAIDU STUDIOS</span>
+          <span className="text-[#646464]">•</span>
+          <span className="text-[#161616]">60 YEARS OF CINEMA MEETS CREATOR BOOM</span>
         </motion.div>
 
-        {/* Main Headline */}
-        <motion.h1
+        {/* Massive Staggered Krackerz Headline */}
+        <motion.div
           initial={{ opacity: 0, y: 25 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.7, delay: 0.1, ease: 'easeOut' }}
-          className="text-3xl sm:text-5xl md:text-6xl lg:text-7xl font-extrabold tracking-tight text-white leading-[1.08] mb-6"
+          transition={{ duration: 0.6, delay: 0.1 }}
+          className="mb-8"
         >
-          We Turn Raw Footage Into{' '}
-          <span className="bg-gradient-to-r from-amber-400 via-amber-200 to-orange-400 bg-clip-text text-transparent">
-            High-Retention
-          </span>{' '}
-          Visual Masterpieces.
-        </motion.h1>
+          <h1 className="text-4xl sm:text-6xl md:text-7xl lg:text-8xl font-black uppercase tracking-tight text-[#161616] leading-[0.95]">
+            <span className="block">FOR THE CRAFT</span>
+            <span className="flex items-center justify-center gap-3 sm:gap-4 my-1 sm:my-2">
+              <span>THEY</span>
+              <span className="inline-block transform -rotate-3 px-4 sm:px-6 py-0.5 sm:py-1 rounded-full bg-[#F8330B] text-white italic font-serif lowercase border-2 border-[#161616] shadow-[3px_3px_0px_#161616]">
+                don't
+              </span>
+              <span>TEACH</span>
+            </span>
+            <span className="block text-[#161616]">IN FILM SCHOOLS</span>
+          </h1>
+        </motion.div>
 
-        {/* Supporting Text */}
+        {/* Supporting Narrative */}
         <motion.p
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 0.2, ease: 'easeOut' }}
-          className="max-w-3xl mx-auto text-base sm:text-lg md:text-xl text-zinc-400 font-normal leading-relaxed mb-10"
+          transition={{ duration: 0.5, delay: 0.2 }}
+          className="max-w-3xl mx-auto text-base sm:text-lg md:text-xl font-medium text-[#303030] leading-relaxed mb-10"
         >
-          Full-service creator studio engineering 15 world-class editing styles — from Vox explainers & Johnny Harris documentaries to Iman Gadzhi retention pacing and 3D kinetic motion.
+          <span className="font-bold text-[#161616]">Algorithms change every quarter. Storytelling has lasted 60 years.</span>
+          <br className="hidden sm:inline" />
+          {' '}12 weeks inside a working Guinness World Record film lot in Jubilee Hills to turn creative ambition into high-earning media businesses.
         </motion.p>
 
-        {/* CTA Button Group */}
+        {/* Action Button Group */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 0.3, ease: 'easeOut' }}
+          transition={{ duration: 0.5, delay: 0.3 }}
           className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-16"
         >
           <button
-            onClick={onOpenBooking}
-            className="w-full sm:w-auto inline-flex items-center justify-center gap-2.5 px-7 py-3.5 rounded-xl font-semibold text-sm sm:text-base text-black bg-gradient-to-r from-amber-400 to-amber-500 hover:from-amber-300 hover:to-amber-400 shadow-xl shadow-amber-500/20 hover:shadow-amber-500/30 transition-all duration-200 cursor-pointer active:scale-95"
+            onClick={onOpenApply}
+            className="w-full sm:w-auto inline-flex items-center justify-center gap-3 px-8 py-4 rounded-full font-extrabold uppercase tracking-wider text-sm sm:text-base text-white bg-[#161616] hover:bg-[#C8FF2E] hover:text-[#161616] border-2 border-[#161616] shadow-[4px_4px_0px_#161616] hover:shadow-[6px_6px_0px_#161616] transition-all cursor-pointer active:translate-x-0.5 active:translate-y-0.5"
           >
-            <span>Book Studio Project Call</span>
+            <span>Apply First, Pay After Selection</span>
             <ArrowRight className="w-4 h-4" />
           </button>
 
           <a
-            href="#styles"
-            className="w-full sm:w-auto inline-flex items-center justify-center gap-2.5 px-6 py-3.5 rounded-xl font-medium text-sm sm:text-base text-zinc-200 bg-zinc-900/80 hover:bg-zinc-800/90 border border-zinc-700/60 transition-all duration-200 cursor-pointer"
+            href="#program"
+            className="w-full sm:w-auto inline-flex items-center justify-center gap-2.5 px-7 py-4 rounded-full font-bold uppercase tracking-wider text-sm sm:text-base text-[#161616] bg-[#FEFAE7] hover:bg-[#EDEBE1] border-2 border-[#161616] shadow-[3px_3px_0px_#161616] transition-all cursor-pointer"
           >
-            <Film className="w-4 h-4 text-amber-400" />
-            <span>Explore 15 Styles</span>
-          </a>
-
-          <a
-            href="#work"
-            className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-5 py-3.5 rounded-xl font-medium text-sm text-zinc-400 hover:text-white transition-colors duration-200"
-          >
-            <Play className="w-4 h-4 text-zinc-400" />
-            <span>View Recent Work</span>
+            <Film className="w-4 h-4 text-[#F8330B]" />
+            <span>Explore 12-Week Program</span>
           </a>
         </motion.div>
 
-        {/* Real Metrics Row */}
-        <motion.div
-          initial={{ opacity: 0, y: 25 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.7, delay: 0.4, ease: 'easeOut' }}
-          className="grid grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-4 max-w-4xl mx-auto pt-6 border-t border-zinc-800/80"
-        >
+        {/* Verification Guarantee Stamp */}
+        <div className="flex flex-wrap items-center justify-center gap-6 text-xs font-mono font-bold uppercase tracking-wide text-[#580D14] mb-14">
+          <div className="flex items-center gap-1.5">
+            <CheckCircle2 className="w-4 h-4 text-[#F8330B]" />
+            <span>Zero Upfront Application Cost</span>
+          </div>
+          <div className="flex items-center gap-1.5">
+            <CheckCircle2 className="w-4 h-4 text-[#F8330B]" />
+            <span>Shoot On Physical Soundstages</span>
+          </div>
+          <div className="flex items-center gap-1.5">
+            <CheckCircle2 className="w-4 h-4 text-[#F8330B]" />
+            <span>Direct Studio Head Mentorship</span>
+          </div>
+        </div>
+      </div>
+
+      {/* Infinite Horizontal Running Marquee Ribbon */}
+      <div className="w-full py-4 border-y-2 border-[#161616] bg-[#FEFAE7] overflow-hidden select-none">
+        <div className="animate-marquee flex items-center gap-4">
+          {[...marqueePills, ...marqueePills].map((pill, idx) => (
+            <div
+              key={idx}
+              className={`flex items-center gap-2 px-4 py-2 rounded-full border-2 border-[#161616] shadow-[2px_2px_0px_#161616] font-mono text-xs font-bold uppercase whitespace-nowrap ${pill.color}`}
+            >
+              <Sparkles className="w-3 h-3" />
+              <span>{pill.text}</span>
+            </div>
+          ))}
+        </div>
+      </div>
+
+      {/* 4 Heritage Metrics Cards */}
+      <div className="max-w-6xl mx-auto px-4 mt-12">
+        <div className="grid grid-cols-2 lg:grid-cols-4 gap-4">
           {STUDIO_METRICS.map((metric, idx) => (
             <div
               key={idx}
-              className="p-4 rounded-2xl bg-zinc-900/40 border border-zinc-800/70 backdrop-blur-sm text-left hover:border-zinc-700/80 transition-colors"
+              className="p-5 rounded-2xl bg-white border-2 border-[#161616] shadow-[4px_4px_0px_#161616] hover:translate-x-[-2px] hover:translate-y-[-2px] hover:shadow-[6px_6px_0px_#161616] transition-all"
             >
-              <div className="text-2xl sm:text-3xl font-extrabold text-white tracking-tight flex items-center gap-1.5 font-mono">
+              <div className="text-3xl sm:text-4xl font-black text-[#161616] font-mono flex items-baseline gap-1">
                 {metric.value}
-                {idx === 0 && <Eye className="w-4 h-4 text-amber-400 inline" />}
-                {idx === 1 && <Award className="w-4 h-4 text-purple-400 inline" />}
-                {idx === 2 && <TrendingUp className="w-4 h-4 text-emerald-400 inline" />}
-                {idx === 3 && <Flame className="w-4 h-4 text-orange-400 inline" />}
+                <span className="text-xs uppercase font-mono font-bold text-[#F8330B]">★</span>
               </div>
-              <div className="text-xs sm:text-sm font-medium text-zinc-300 mt-1">{metric.label}</div>
-              <div className="text-[11px] text-zinc-500 mt-0.5">{metric.subtext}</div>
+              <div className="text-xs sm:text-sm font-bold uppercase tracking-tight text-[#161616] mt-1">
+                {metric.label}
+              </div>
+              <div className="text-[11px] font-mono text-[#646464] mt-0.5">
+                {metric.subtext}
+              </div>
             </div>
           ))}
-        </motion.div>
+        </div>
       </div>
     </section>
   );
